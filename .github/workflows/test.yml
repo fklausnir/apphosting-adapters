@@ -26,12 +26,12 @@ jobs:
         with:
           fetch-depth: 2
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           check-latest: false
       - name: node_modules cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: node_modules_cache
         with:
           path: ./node_modules
@@ -68,13 +68,13 @@ jobs:
         with:
           fetch-depth: 2
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
       - name: node_modules cache
         id: node_modules_cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./node_modules
           key: ${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
@@ -84,7 +84,7 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Firebase emulator cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/firebase/emulators
           key: firebase_emulators
@@ -102,13 +102,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
       - name: node_modules cache
         id: node_modules_cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./node_modules
           key: ${{ runner.os }}-20-${{ hashFiles('package-lock.json') }}
@@ -141,7 +141,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           check-latest: false
